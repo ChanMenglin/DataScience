@@ -10,7 +10,7 @@
 > 5. Model：通过数据分析和机器学习对数据进行进一步分析和训练（[SciKit-learn](http://scikit-learn.org/)、[SciPy](https://www.scipy.org)、[TensorFlow](https://tensorflow.google.cn)）
 > 6. iNterpret：最终结果展示（[BOKEH](https://bokeh.pydata.org/en/latest/)、[D3.js](https://d3js.org)）
 
-# 目录（Content）
+# 目录（Contents）
 
 * [1. 环境搭建](#1-环境搭建)
 * [2. NumPy 入门](#2-numpy-入门)
