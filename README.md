@@ -13,17 +13,17 @@
 # 目录（Content）
 
 * [1. 环境搭建](#1-环境搭建)
-* [2. NumPy 入门](#2-NumPy-入门)
+* [2. NumPy 入门](#2-numpy-入门)
 * [3. pandas 入门](#3-pandas-入门)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
-* [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-MatPlotLib)
-* [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-SeaBorn)
+* [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
+* [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
 * [7. 数据分析项目实战](#7-数据分析项目实战)
 
 ---
 
 * [附录](#附录)
-    * [1. 数据可续领域5个组建 Python 库](#1-数据可续领域5个组建-Python-库)
+    * [1. 数据可续领域5个组建 Python 库](#1-数据科学领域5个组建-python-库)
     * [2. 数学基础-矩阵运算](#2-数学基础-矩阵运算)
 
 ---
@@ -67,7 +67,7 @@ pandas 进阶，学习数据清洗、排序、采样技术、封箱技术、Grou
 
 # 附录
 
-## 1. 数据可续领域5个组建 Python 库
+## 1. 数据科学领域5个组建 Python 库
 
 [NumPy](http://www.numpy.org)  
 
