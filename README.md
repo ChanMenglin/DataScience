@@ -368,7 +368,8 @@ c['b'] # 读 b
 
 ## 3. pandas 入门
 
-pandas 中两种重要的数据结构，此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
+pandas 中两种重要的数据结构  
+此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
 
 ## 4. pandas 玩转数据
 
