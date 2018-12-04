@@ -526,12 +526,12 @@ webbrowser.open(link) # 打开一个网页
 df = pd.read_clipboard() # 读取粘贴板并解析，再转换为一个 DataFrame （此处一定要先复制表格后执行）
 df
 '''
-Dec 2018	Dec 2017	Change	Programming Language	Ratings	Change.1
-0	1	1	NaN	Java	15.932%	+2.66%
-1	2	2	NaN	C	14.282%	+4.12%
-2	3	4	change	Python	8.376%	+4.60%
-3	4	3	change	C++	7.562%	+2.84%
-4	5	7	change	Visual Basic .NET	7.127%	+4.66%
+    Dec 2018	Dec 2017	Change	Programming Language	Ratings	Change.1
+0	1	        1	 NaN	    Java	        15.932%	+2.66%
+1	2	        2	 NaN	    C	                14.282%	+4.12%
+2	3	        4	change	    Python	        8.376%	+4.60%
+3	4	        3	change	    C++	                7.562%	+2.84%
+4	5	        7	change	    Visual Basic .NET	7.127%	+4.66%
 '''
 
 # 查看 df 的数据类型
@@ -549,12 +549,12 @@ from pandas import Series, DataFrame
 
 # df
 '''
-Dec 2018	Dec 2017	Change	Programming Language	Ratings	Change.1
-0	1	1	NaN	Java	15.932%	+2.66%
-1	2	2	NaN	C	14.282%	+4.12%
-2	3	4	change	Python	8.376%	+4.60%
-3	4	3	change	C++	7.562%	+2.84%
-4	5	7	change	Visual Basic .NET	7.127%	+4.66%
+    Dec 2018	Dec 2017	Change	Programming Language	Ratings	Change.1
+0	1	    1	        NaN	    Java	        15.932%	+2.66%
+1	2	    2	        NaN	    C	                14.282%	+4.12%
+2	3	    4	        change	    Python	        8.376%	+4.60%
+3	4	    3	        change	    C++	                7.562%	+2.84%
+4	5	    7	        change	    Visual Basic .NET	7.127%	+4.66%
 '''
 
 # 读取 DataFrame 的列名
@@ -595,12 +595,12 @@ df_new = pd.DataFrame(df, columns=[ 'Programming Language', 'Dec 2018' ] )
 df_new
 '''
 
-Programming Language	Dec 2018
-0	Java	1
-1	C	2
-2	Python	3
-3	C++	4
-4	Visual Basic .NET	5
+    Programming Language	Dec 2018
+0	Java	                    1
+1	C	                    2
+2	Python	                    3
+3	C++	                    4
+4	Visual Basic .NET	    5
 '''
 
 # 当通过之前的 DataFrame 生成新的 DataFrame 且有一列在 原 DataFrame 不存在时（此处为 'Dec 2019'）
@@ -608,11 +608,11 @@ df_new = pd.DataFrame(df, columns=[ 'Programming Language', 'Dec 2018', 'Dec 201
 df_new
 '''
 	Programming Language	Dec 2018	Dec 2019
-0	Java	1	NaN
-1	C	2	NaN
-2	Python	3	NaN
-3	C++	4	NaN
-4	Visual Basic .NET	5	NaN
+0	    Java	            1	        NaN
+1	    C	                    2	        NaN
+2	    Python	            3	        NaN
+3	    C++	                    4	        NaN
+4	    Visual Basic .NET	    5	        NaN
 '''
 
 # 修改 DataFrame 列的值 方法一 通过 list 修改
@@ -627,11 +627,11 @@ df_new
 # 方法一、方法二、方法三的结果均相同
 '''
 	Programming Language	Dec 2018	Dec 2019
-0	Java	1	0
-1	C	2	1
-2	Python	3	2
-3	C++	4	3
-4	Visual Basic .NET	5	4
+0	    Java	            1	            0
+1	    C	                    2	            1
+2	    Python	            3	            2
+3	    C++	                    4	            3
+4	    Visual Basic .NET	    5	            4
 '''
 
 # 修改 DataFrame 列的指定行值 方法四 通过 Sreies 指定 index 修改(为指定的行默认为 NaN)
@@ -639,11 +639,11 @@ df_new['Dec 2019'] = pd.Series([100, 200], index=[1, 2])
 df_new
 '''
 	Programming Language	Dec 2018	Dec 2019
-0	Java	1	NaN
-1	C	2	100.0
-2	Python	3	200.0
-3	C++	4	NaN
-4	Visual Basic .NET	5	NaN
+0	        Java	            1	        NaN
+1	        C	            2	        100.0
+2	        Python	            3	        200.0
+3	        C++	            4	        NaN
+4	        Visual Basic .NET   5	        NaN
 
 '''
 ```
