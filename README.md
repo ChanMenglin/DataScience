@@ -51,6 +51,8 @@ Timothy老师的 [搭建开发环境，跨平台原理](http://sa.mentorx.net/co
 
 ### 2.3 Array 的 input 和 output
 
+[Array 的 input 和 output](Code/1-NumPy/Array的input和output.ipynb)
+
 ## 3. pandas 入门
 
 pandas 中两种重要的数据结构，此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
