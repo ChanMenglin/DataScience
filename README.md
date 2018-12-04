@@ -30,7 +30,7 @@
         * [3.1.2 Series 操作](#312-series-操作)
     * [3.2 pandas 中的 DataFrame](#32-pandas-中的-dataframe)
         * [3.2.1 创建 DataFrame](#321-创建-dataframe)
-        * [3.2.2 DataFrame 操作](#3.2.2-dataframe-操作)
+        * [3.2.2 DataFrame 操作](#322-dataframe-操作)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
