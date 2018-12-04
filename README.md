@@ -25,6 +25,12 @@
         * [2.3.1 使用 pickle 序列化 numpy array](#231-使用-pickle-序列化-numpy-array)
         * [2.3.2 使用 numpy 序列化 numpy array](#232-使用-numpy-序列化-numpy-array)
 * [3. pandas 入门](#3-pandas-入门)
+    * [3.1 pandas 中的 Series](#31-pandas-中的-series)
+        * [3.1.1 创建 Series](#311-创建-series)
+        * [3.1.2 Series 操作](#312-series-操作)
+    * [3.2 pandas 中的 DataFrame](#32-pandas-中的-dataframe)
+        * [3.2.1 创建 DataFrame](#321-创建-dataframe)
+        * [3.2.2 DataFrame 操作](#3.2.2-dataframe-操作)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
@@ -368,8 +374,279 @@ c['b'] # 读 b
 
 ## 3. pandas 入门
 
-pandas 中两种重要的数据结构  
+pandas 中两种重要的数据结构：Series 和 DataFrame  
 此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
+
+### 3.1 pandas 中的 Series
+
+[pandas 中的 Series](Code/2-pandas/pandas中的Series.ipynb)
+
+#### 3.1.1 创建 Series
+
+```python
+import numpy as np
+import pandas as pd
+
+# 创建 Series
+# 通过 list 创建
+s1 = pd.Series([1, 2, 3, 4])
+s1
+# 0    1
+# 1    2
+# 2    3
+# 3    4
+# dtype: int64
+
+# 通过 NumPy 的 Array 创建
+s2 = pd.Series(np.arange(3))
+s2
+# 0    0
+# 1    1
+# 2    2
+# dtype: int64
+
+# 通过 字典 创建
+s3 = pd.Series({'1': 1, '2': 2, '3': 3})
+s3
+# 1    1
+# 2    2
+# 3    3
+# dtype: int64
+
+# 通过其他 Series 创建，当新的 Series 比原先的长时，多出的值为 NaN
+index_1 = ['A', 'B', 'C', 'D', 'E']
+s5 = pd.Series(s4, index=index_1)
+# s5
+# A    1.0
+# B    2.0
+# C    3.0
+# D    4.0
+# E    NaN
+# dtype: float64
+```
+
+#### 3.1.2 Series 操作
+
+```python
+import numpy as np
+import pandas as pd
+
+# Series 操作
+
+# s1
+# 0    1
+# 1    2
+# 2    3
+# 3    4
+# dtype: int64
+
+# 查看 Series 的数据（数据为 array）
+s1.values # array([1, 2, 3, 4])
+
+# 查案 Series 的索引
+s1.index # RangeIndex(start=0, stop=4, step=1)
+
+# 指定 Series 的 index
+s4 = pd.Series([1, 2, 3, 4], index=['A', 'B', 'C', 'D'])
+s4
+# A    1
+# B    2
+# C    3
+# D    4
+# dtype: int64
+
+# 获取 s4 中索引为 A 的元素
+s4['A'] # 1
+
+# 获取 s4 中元素的值大于 2 的数据
+s4[s4>2]
+# C    3
+# D    4
+# dtype: int64
+
+# 将 Series 转换为 字典
+s4.to_dict() # {'A': 1, 'B': 2, 'C': 3, 'D': 4}
+
+--------------------
+# s5
+# A    1.0
+# B    2.0
+# C    3.0
+# D    4.0
+# E    NaN
+# dtype: float64
+
+# 判断空值
+pd.isnull(s5)
+# A    False
+# B    False
+# C    False
+# D    False
+# E     True
+# dtype: bool
+
+# 判断非空值
+pd.notnull(s5)
+# A     True
+# B     True
+# C     True
+# D     True
+# E    False
+# dtype: bool
+
+# 为 Series 添加名称
+s5.name = 'demo'
+
+# 为 Series 的 index 添加名称
+s5.index.name = 'demo index'
+s5.index # Index(['A', 'B', 'C', 'D', 'E'], dtype='object', name='demo index')
+```
+
+### 3.2 pandas 中的 DataFrame
+
+[pandas 中的 DataFrame](Code/2-pandas/pandas中的DataFrame.ipynb)
+
+
+#### 3.2.1 创建 DataFrame
+
+```python
+import numpy as np
+import pandas as pd
+from pandas import Series, DataFrame
+
+# 创建 DataFrame
+
+# 通过 webbrowser 打开一个网页
+import webbrowser
+link = 'https://www.tiobe.com/tiobe-index/'
+webbrowser.open(link) # 打开一个网页
+
+# 通过 粘贴板 导入
+# 先复制一个表格（此处为 https://www.tiobe.com/tiobe-index/ 中的编程语言排行榜）
+df = pd.read_clipboard() # 读取粘贴板并解析，再转换为一个 DataFrame （此处一定要先复制表格后执行）
+df
+'''
+Dec 2018	Dec 2017	Change	Programming Language	Ratings	Change.1
+0	1	1	NaN	Java	15.932%	+2.66%
+1	2	2	NaN	C	14.282%	+4.12%
+2	3	4	change	Python	8.376%	+4.60%
+3	4	3	change	C++	7.562%	+2.84%
+4	5	7	change	Visual Basic .NET	7.127%	+4.66%
+'''
+
+# 查看 df 的数据类型
+type(df) # pandas.core.frame.DataFrame
+```
+
+#### 3.2.2 DataFrame 操作
+
+```python
+import numpy as np
+import pandas as pd
+from pandas import Series, DataFrame
+
+# DataFrame 操作
+
+# df
+'''
+Dec 2018	Dec 2017	Change	Programming Language	Ratings	Change.1
+0	1	1	NaN	Java	15.932%	+2.66%
+1	2	2	NaN	C	14.282%	+4.12%
+2	3	4	change	Python	8.376%	+4.60%
+3	4	3	change	C++	7.562%	+2.84%
+4	5	7	change	Visual Basic .NET	7.127%	+4.66%
+'''
+
+# 读取 DataFrame 的列名
+df.columns
+'''
+Index(['Dec 2018', 'Dec 2017', 'Change', 'Programming Language', 'Ratings',
+       'Change.1'],
+      dtype='object')
+'''
+
+# 获取莫一列的值
+df.Ratings # 列名
+'''
+0    15.932%
+1    14.282%
+2     8.376%
+3     7.562%
+4     7.127%
+Name: Ratings, dtype: object
+'''
+
+# 获取莫一列的值
+df['Programming Language']
+'''
+0                 Java
+1                    C
+2               Python
+3                  C++
+4    Visual Basic .NET
+Name: Programming Language, dtype: object
+'''
+
+# 放回的类型为 Series
+type(df['Programming Language']) # pandas.core.series.Series
+
+# 数据过滤
+df_new = pd.DataFrame(df, columns=[ 'Programming Language', 'Dec 2018' ] )
+df_new
+'''
+
+Programming Language	Dec 2018
+0	Java	1
+1	C	2
+2	Python	3
+3	C++	4
+4	Visual Basic .NET	5
+'''
+
+# 当通过之前的 DataFrame 生成新的 DataFrame 且有一列在 原 DataFrame 不存在时（此处为 'Dec 2019'）
+df_new = pd.DataFrame(df, columns=[ 'Programming Language', 'Dec 2018', 'Dec 2019' ] )
+df_new
+'''
+	Programming Language	Dec 2018	Dec 2019
+0	Java	1	NaN
+1	C	2	NaN
+2	Python	3	NaN
+3	C++	4	NaN
+4	Visual Basic .NET	5	NaN
+'''
+
+# 修改 DataFrame 列的值 方法一 通过 list 修改
+df_new['Dec 2019'] = range(0, 5)
+
+# 修改 DataFrame 列的值 方法二 通过 array 修改
+df_new['Dec 2019'] = np.arange(0, 5)
+
+# 修改 DataFrame 列的值 方法三 通过 Sreies 修改
+df_new['Dec 2019'] = pd.Series(np.arange(0, 5))
+df_new
+# 方法一、方法二、方法三的结果均相同
+'''
+	Programming Language	Dec 2018	Dec 2019
+0	Java	1	0
+1	C	2	1
+2	Python	3	2
+3	C++	4	3
+4	Visual Basic .NET	5	4
+'''
+
+# 修改 DataFrame 列的指定行值 方法四 通过 Sreies 指定 index 修改(为指定的行默认为 NaN)
+df_new['Dec 2019'] = pd.Series([100, 200], index=[1, 2])
+df_new
+'''
+	Programming Language	Dec 2018	Dec 2019
+0	Java	1	NaN
+1	C	2	100.0
+2	Python	3	200.0
+3	C++	4	NaN
+4	Visual Basic .NET	5	NaN
+
+'''
+```
 
 ## 4. pandas 玩转数据
 
