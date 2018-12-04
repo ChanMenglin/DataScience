@@ -39,9 +39,17 @@ Timothy老师的 [搭建开发环境，跨平台原理](http://sa.mentorx.net/co
 
 高效的数据结构 Array（数组）介绍，是学习其他高级数据结构的基础
 
+[NumPy Docs](https://docs.scipy.org/doc/numpy/user/quickstart.html)
+
 ### 2.1 NumPy 中创建数组及访问数组的元素
 
-[NumPy 中创建数组及访问数组的元素](Code/1-NumPy/NumPy中创建数组及访问数组的元素.ipynb)
+[NumPy 中创建数组及访问数组的元素](Code/1-NumPy/NumPy中创建数组及访问数组的元素.ipynb)  
+
+### 2.2 数组和矩阵运算
+
+[数组和矩阵运算](Code/1-NumPy/数组和矩阵运算.ipynb)
+
+### 2.3 Array 的 input 和 output
 
 ## 3. pandas 入门
 
