@@ -654,7 +654,7 @@ df_new
 * DataFrame IO 参考
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/io.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py) | [22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
-* DataFrame(Selecting&Indexing) 参考  
+* DataFrame(Selecting&Indexing) 参考  
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/indexing.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py) | [4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py) | 
 [27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py) | [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)
