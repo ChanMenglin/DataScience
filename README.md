@@ -31,6 +31,7 @@
     * [3.2 pandas 中的 DataFrame](#32-pandas-中的-dataframe)
         * [3.2.1 创建 DataFrame](#321-创建-dataframe)
         * [3.2.2 DataFrame 操作](#3.2.2-dataframe-操作)
+    * [3.3 深入理解 Series 和 DataFrame](#33-深入理解-series-和-dataframe)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
@@ -647,6 +648,16 @@ df_new
 
 '''
 ```
+
+### 3.3 深入理解 Series 和 DataFrame
+
+* DataFrame IO 参考
+[官方文档](http://pandas.pydata.org/pandas-docs/stable/io.html)  
+[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py) | [22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
+* DataFrame(Selecting&Indexing) 参考  
+[官方文档](http://pandas.pydata.org/pandas-docs/stable/indexing.html)  
+[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py) | [4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py) | 
+[27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py) | [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)
 
 ## 4. pandas 玩转数据
 
