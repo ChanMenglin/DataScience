@@ -30,12 +30,12 @@
         * [3.1.2 Series 操作](#312-series-操作)
     * [3.2 pandas 中的 DataFrame](#32-pandas-中的-dataframe)
         * [3.2.1 创建 DataFrame](#321-创建-dataframe)
-        * [3.2.2 DataFrame 操作](#3.2.2-dataframe-操作)
+        * [3.2.2 DataFrame 操作](#322-dataframe-操作)
     * [3.3 深入理解 Series 和 DataFrame](#33-深入理解-series-和-dataframe)
     * [3.4 DataFrame IO](#34-dataframe-io)
-    * [3.5 DataFrame(Selecting&Indexing)](#35-dataframeselecting&amp;indexing)
-    * [3.6 Reindexing Series and DataFrame](#36-reindexing-series-and-dataframe)
-    * [3.7 Mapping and Replace](#37-mapping-and-replace)
+    * [3.5 DataFrame(Selecting 和 Indexing)](#35-dataframeselecting-和-indexing)
+    * [3.6 Reindexing Series 和 DataFrame](#36-reindexing-series-和-dataframe)
+    * [3.7 Mapping 和 Replace](#37-mapping-和-replace)
     * [3.8 NaN - Not a Number](#38-nan---not-a-number)
     * [3.9 多级 index](#39-多级-index)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
@@ -765,13 +765,13 @@ df_new
 
 
 
-### 3.5 DataFrame(Selecting&Indexing)
+### 3.5 DataFrame(Selecting 和 Indexing)
 
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/indexing.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py) | [4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py) | 
 [27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py) | [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)
 
-### 3.6 Reindexing Series and DataFrame
+### 3.6 Reindexing Series 和 DataFrame
 
 [Reindexing Series&DataFrame](Code/2-pandas/ReindexingSeries&DataFrame.ipynb)  
 
@@ -890,7 +890,7 @@ F	0.599175	0.543432	0.443125	0.471929	0.436654
 '''
 ```
 
-### 3.7 Mapping and Replace
+### 3.7 Mapping 和 Replace
 
 [Mapping&Replace](Code/2-pandas/Mapping&Replace.ipynb)  
 
