@@ -32,6 +32,12 @@
         * [3.2.1 创建 DataFrame](#321-创建-dataframe)
         * [3.2.2 DataFrame 操作](#3.2.2-dataframe-操作)
     * [3.3 深入理解 Series 和 DataFrame](#33-深入理解-series-和-dataframe)
+    * [3.4 DataFrame IO](#34-dataframe-io)
+    * [3.5 DataFrame(Selecting&Indexing)](#35-dataframeselecting&amp;indexing)
+    * [3.6 Reindexing Series and DataFrame](#36-reindexing-series-and-dataframe)
+    * [3.7 Mapping and Replace](#37-mapping-and-replace)
+    * [3.8 NaN - Not a Number](#38-nan---not-a-number)
+    * [3.9 多级 index](#39-多级-index)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
@@ -651,13 +657,540 @@ df_new
 
 ### 3.3 深入理解 Series 和 DataFrame
 
-* DataFrame IO 参考  
+[深入理解 Series 和 DataFrame](Code/2-pandas/深入理解Series和DataFrame.ipynb)
+
+```python
+import numpy as np
+import pandas as pd
+
+# 深入理解 Series 和 DataFrame
+
+# 定义基础数据，后面的实例均基于此基础数据
+data = {'Country': ['Belgium', 'India', 'Brazil'], 
+       'Capital': ['Brussels', 'New Delhi', 'Brasilia'], 
+       'Population': [11190846, 1303171035, 207847528]}
+
+# Series
+# 通过字典创建 Series
+s1 = pd.Series(data['Country'], index=['A', 'B', 'C'])
+# s1
+# A    Belgium
+# B      India
+# C     Brazil
+# dtype: object
+
+s1.values # array(['Belgium', 'India', 'Brazil'], dtype=object)
+s1.index # Index(['A', 'B', 'C'], dtype='object')
+
+# DataFrame
+# 通过字典创建 DataFrame
+df1 = pd.DataFrame(data)
+'''
+df1
+        Country	    Capital	Population
+0	Belgium	    Brussels	11190846
+1	India	    New Delhi	1303171035
+2	Brazil	    Brasilia	207847528
+'''
+
+df1['Country']
+# 0    Belgium
+# 1      India
+# 2     Brazil
+# Name: Country, dtype: object
+
+type(df1['Country']) #  pandas.core.series.Series
+
+df1.iterrows() # <generator object DataFrame.iterrows at 0x11e5db258>
+
+for row in df1.iterrows():
+    print('行：'), print(row), 
+    print('行的类型：'), print(type(row)), 
+    print('行的长度：'), print(len(row)), 
+    print('行的第一部分：'), print(row[0]),  
+    print('行的第二部分：'), print(row[1]), 
+    print('行的第一部分的类型：'), print(type(row[0])),  
+    print('行的第二部分的类型：'), print(type(row[1]))
+    break
+'''
+行：
+(0, Country        Belgium
+Capital       Brussels
+Population    11190846
+Name: 0, dtype: object)
+行的类型：
+<class 'tuple'>
+行的长度：
+2
+行的第一部分：
+0
+行的第二部分：
+Country        Belgium
+Capital       Brussels
+Population    11190846
+Name: 0, dtype: object
+行的第一部分的类型：
+<class 'int'>
+行的第二部分的类型：
+<class 'pandas.core.series.Series'>
+'''
+# 从上面的结果可以看出 DataFrame 的行由 Series 组成，因此可以使用 Series 创建 DataFrame
+s1 = pd.Series(data['Capital'])
+s2 = pd.Series(data['Country'])
+s3 = pd.Series(data['Population'])
+df_new = pd.DataFrame([s1, s2, s3], index=['Capital', 'Country', 'Population'])
+df_new
+'''
+            0               1	        2
+Capital	    Brussels	New Delhi	Brasilia
+Country	    Belgium     India	        Brazil
+Population  11190846	1303171035	207847528
+'''
+
+# 行列转换
+df_new = df_new.T
+df_new
+‘’‘
+        Capital	        Country	Population
+0	Brussels	Belgium	11190846
+1	New Delhi	India	1303171035
+2	Brasilia	Brazil	207847528
+’‘’
+```
+
+### 3.4 DataFrame IO
+
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/io.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py) | [22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
-* DataFrame(Selecting&Indexing) 参考  
+
+
+
+### 3.5 DataFrame(Selecting&Indexing)
+
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/indexing.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py) | [4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py) | 
 [27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py) | [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)
+
+### 3.6 Reindexing Series and DataFrame
+
+[Reindexing Series&DataFrame](Code/2-pandas/ReindexingSeries&DataFrame.ipynb)  
+
+```python
+import numpy as np
+import pandas as pd
+
+# Reindexing Series and DataFrame
+
+# Series reindex
+
+s1 = pd.Series([1, 2, 3, 4], index=['A', 'B', 'C', 'D'])
+# s1
+# A    1
+# B    2
+# C    3
+# D    4
+# dtype: int64
+
+# 按住 Shift + Tab 可以查看帮助
+s1.reindex(index=['A', 'B', 'C', 'D', 'E'])
+# A    1.0
+# B    2.0
+# C    3.0
+# D    4.0
+# E    NaN
+# dtype: float64
+
+s1.reindex(index=['A', 'B', 'C', 'D', 'E'], fill_value=10)
+# A     1
+# B     2
+# C     3
+# D     4
+# E    10
+# dtype: int64
+
+s2 = pd.Series(['A', 'B', 'C'], index=[1, 3, 5])
+# s2
+# 1    A
+# 3    B
+# 5    C
+# dtype: object
+
+s2.reindex(index=range(7))
+# 0    NaN
+# 1      A
+# 2    NaN
+# 3      B
+# 4    NaN
+# 5      C
+# 6    NaN
+# dtype: object
+
+# method='ffill' 表示根据已有的值自动填充为 NaN 的值
+s2.reindex(index=range(7), method='ffill')
+# 0    NaN
+# 1      A
+# 2      A
+# 3      B
+# 4      B
+# 5      C
+# 6      C
+# dtype: object
+
+# DataFrame reindex
+
+df1 = pd.DataFrame(np.random.rand(25).reshape([5, 5]), index=['A', 'B', 'D', 'E', 'F'], columns=['c1', 'c2', 'c3', 'c4', 'c5'])
+df1
+'''
+        c1	        c2	        c3	        c4	        c5
+A	0.919411	0.238651	0.088673	0.830227	0.284514
+B	0.334756	0.652239	0.913840	0.053076	0.375364
+D	0.811720	0.760921	0.860246	0.727191	0.009915
+E	0.282364	0.246554	0.743932	0.445262	0.339246
+F	0.438870	0.930862	0.817973	0.861525	0.550942
+'''
+
+df1.reindex(index=[['A', 'B', 'C', 'D', 'E']], columns=['c1', 'c2', 'c3', 'c4', 'c5', 'c6'])
+'''
+        c1	c2	c3	c4	c5	c6
+A	NaN	NaN	NaN	NaN	NaN	NaN
+B	NaN	NaN	NaN	NaN	NaN	NaN
+C	NaN	NaN	NaN	NaN	NaN	NaN
+D	NaN	NaN	NaN	NaN	NaN	NaN
+E	NaN	NaN	NaN	NaN	NaN	NaN
+'''
+
+s1.reindex(index=['C', 'D'])
+# C    3
+# D    4
+# dtype: int64
+
+df1.reindex(index=['A', 'B'])
+'''
+        c1	        c2	        c3	        c4	        c5
+A	0.352591	0.437914	0.131892	0.273035	0.463063
+B	0.367352	0.245098	0.081478	0.744348	0.990410
+'''
+
+s1.drop('A')
+# B    2
+# C    3
+# D    4
+# dtype: int64
+
+# axis 表示行和列
+# 0 表示行
+# 1 表示列
+df1.drop('A', axis=0)
+'''
+        c1	        c2	        c3	        c4	        c5
+B	0.367352	0.245098	0.081478	0.744348	0.990410
+D	0.364244	0.751367	0.782257	0.443011	0.688876
+E	0.615851	0.725409	0.741932	0.791803	0.576622
+F	0.599175	0.543432	0.443125	0.471929	0.436654
+'''
+```
+
+### 3.7 Mapping and Replace
+
+[Mapping&Replace](Code/2-pandas/Mapping&Replace.ipynb)  
+
+```python
+import numpy as np
+import pandas as pd
+
+# Mapping
+df1 = pd.DataFrame({'城市': ['北京', '上海', '广州'], '人口': [1000, 2000, 1500]}, index=['A', 'B', 'C'])
+# df1
+'''
+        城市	人口
+A	北京	1000
+B	上海	2000
+C	广州	1500
+'''
+
+df1['GDP'] = pd.Series([1000, 2000, 1500])
+df1
+'''
+	城市	人口	GDP
+A	北京	1000	NaN
+B	上海	2000	NaN
+C	广州	1500	NaN
+'''
+
+gdp_map = {'北京': 1100, '上海': 2100, '广州': 1600}
+df1['GDP'] = df1['城市'].map(gdp_map)
+df1
+'''
+        城市	人口	GDP
+A	北京	1000	1100
+B	上海	2000	2100
+C	广州	1500	1600
+'''
+
+df1['GDP'] = pd.Series([1000, 2000, 1500], index=['A', 'B', 'C'])
+df1
+'''
+        城市	人口	GDP
+A	北京	1000	1000
+B	上海	2000	2000
+C	广州	1500	1500
+'''
+
+s1 = pd.Series(np.arange(5))
+# s1
+# 0    0
+# 1    1
+# 2    2
+# 3    3
+# 4    4
+# dtype: int64
+
+s1.replace(1, np.nan)
+# 0    0.0
+# 1    NaN
+# 2    2.0
+# 3    3.0
+# 4    4.0
+# dtype: float64
+
+s1.replace([1, 2, 3], [10, 20, 30])
+# 0     0
+# 1    10
+# 2    20
+# 3    30
+# 4     4
+# dtype: int64
+```
+
+### 3.8 NaN - Not a Number
+
+[Not a Number](Code/2-pandas/NaN.ipynb)  
+
+```python
+import numpy as np
+import pandas as pd
+
+# NaN - Not a Number
+
+n = np.nan
+type(n) # float
+
+# 任何数值（整数、浮点数、0）与 NaN 作运算结果都是 NaN
+m = 1
+m + n # nan
+
+# NaN in Series
+s1 = pd.Series([1, 2, np.nan, 3, 4], index=['A', 'B', 'C', 'D', 'E'])
+# s1
+# A    1.0
+# B    2.0
+# C    NaN
+# D    3.0
+# E    4.0
+# dtype: float64
+
+# 判断 Series 中的值是否是 NaN
+s1.isnull()
+# A    False
+# B    False
+# C     True
+# D    False
+# E    False
+# dtype: bool
+
+# 判断 Series 中的值是否不是 NaN
+s1.notnull()
+# A     True
+# B     True
+# C    False
+# D     True
+# E     True
+# dtype: bool
+
+# 删除 Series 中的值是 NaN 的数据
+s1.dropna()
+# A    1.0
+# B    2.0
+# D    3.0
+# E    4.0
+# dtype: float64
+
+# Nan in DataFrame
+df1 = pd.DataFrame([[1, 2, 3], [np.nan, 5, 6], [7, np.nan, 9], [np.nan, np.nan, np.nan]])
+df1
+'''
+        0	1	2
+0	1.0	2.0	3.0
+1	NaN	5.0	6.0
+2	7.0	NaN	9.0
+3	NaN	NaN	NaN
+'''
+
+df1.isnull()
+'''
+        0	1	2
+0	False	False	False
+1	True	False	False
+2	False	True	False
+3	True	True	True
+'''
+
+df1.notnull()
+'''
+        0	1	2
+0	True	True	True
+1	False	True	True
+2	True	False	True
+3	False	False	False
+'''
+
+df1.dropna(axis=0)
+'''
+        0	1	2
+0	1.0	2.0	3.0
+'''
+
+df1.dropna(axis=1)
+'''
+0
+1
+2
+3
+'''
+
+df1.dropna(how='all')
+'''
+        0	1	2
+0	1.0	2.0	3.0
+1	NaN	5.0	6.0
+2	7.0	NaN	9.0
+'''
+
+df2 = pd.DataFrame([[np.nan, 5, 6], [7, np.nan, np.nan], [np.nan, np.nan, np.nan]])
+# df2
+'''
+        0	1	2
+0	NaN	5.0	6.0
+1	7.0	NaN	NaN
+2	NaN	NaN	NaN
+'''
+
+# thresh 表示范围 删除少于 2 个非 NaN 值的行或列
+df2.dropna(thresh=2)
+'''
+        0	1	2
+0	NaN	5.0	6.0
+'''
+
+# 替换值为 NaN 的值
+df2.fillna(value=1)
+'''
+        0	1	2
+0	1.0	5.0	6.0
+1	7.0	1.0	1.0
+2	1.0	1.0	1.0
+'''
+
+# 按列替换值为 NaN 的值
+df2.fillna(value={0:0, 1:1, 2:2})
+'''
+        0	1	2
+0	0.0	5.0	6.0
+1	7.0	1.0	2.0
+2	0.0	1.0	2.0
+'''
+```
+
+### 3.9 多级 index
+
+[多级 index](Code/2-pandas/多级index.ipynb)  
+
+```python
+import numpy as np
+import pandas as pd
+
+# 多级 index
+
+# 创建一个两级的 Series
+s1 = pd.Series(np.random.randn(6), index=[[1, 1, 1, 2, 2, 2], ['a', 'b', 'c', 'a', 'b', 'c']])
+s1
+# 1  a   -0.610026
+#    b    1.649775
+#    c    0.835034
+# 2  a    0.899401
+#    b   -0.685298
+#    c   -1.846341
+# dtype: float64
+
+s1[1]
+# a   -0.610026
+# b    1.649775
+# c    0.835034
+# dtype: float64
+
+s1[1]['a'] # -0.6100255133809527
+
+s1[:, 'a']
+# 1    1.042715
+# 2    1.460387
+# dtype: float64
+
+# 多级 Series 转换为 Da taFrame
+df1 = s1.unstack()
+# df1
+'''
+        a	        b	        c
+1	-0.610026	1.649775	0.835034
+2	0.899401	-0.685298	-1.846341
+
+'''
+
+df2 = pd.DataFrame([s1[1], s1[2]])
+# df2
+'''
+        a	        b	        c
+0	-0.610026	1.649775	0.835034
+1	0.899401	-0.685298	-1.846341
+'''
+
+# DataFrame 转换为多级 Series
+s2 = df1.T.unstack()
+# s2
+# 1  a   -0.610026
+#    b    1.649775
+#    c    0.835034
+# 2  a    0.899401
+#    b   -0.685298
+#    c   -1.846341
+# dtype: float64
+
+# 创建多级 index 的 Da taFrame
+df = pd.DataFrame(np.arange(16).reshape(4, 4), index=[['a', 'a', 'b', 'b'], [1, 2, 1, 2]], columns=[['bj', 'bj', 'sh', 'gz'], [8, 9, 8, 8]])
+# df
+'''
+        bj	        sh	        gz
+        8	9	8	8
+a	1	0	1	2	3
+        2	4	5	6	7
+b	1	8	9	10	11
+        2	12	13	14	15
+'''
+
+df['bj']
+'''
+                8	9
+a	1	0	1
+        2	4	5
+b	1	8	9
+        2	12	13
+'''
+
+df['bj'][8]
+# a  1     0
+#    2     4
+# b  1     8
+#    2    12
+```
 
 ## 4. pandas 玩转数据
 
