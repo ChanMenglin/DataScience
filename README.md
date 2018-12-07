@@ -39,6 +39,16 @@
     * [3.8 NaN - Not a Number](#38-nan---not-a-number)
     * [3.9 多级 index](#39-多级-index)
 * [4. pandas 玩转数据](#4-pandas-玩转数据)
+    * [4.1 Series 和 DataFrame 的简单数学运算](#41-series-和-dataframe-的简单数学运算)
+        * [4.1.1 Series 的数学运算](#411-series-的数学运算)
+        * [4.1.2 DataFrame 的数学运算](#412-dataframe-的数学运算)
+    * [4.2 Series 和 DataFrame 的排序](#42-series-和-dataframe-的排序)
+    * [4.3 重命名 DataFrame 的 index](#43-重命名-dataframe-的-index)
+    * [4.4 DataFrame 的 merge 操作](#44-dataframe-的-merge-操作)
+    * [4.5 Concatenate 和 Combine](#45-concatenate-和-combine)
+        * [4.5.1 Concatenate](#451-concatenate)
+        * [4.5.2 Concat](#452-concat)
+        * [4.5.3 Combine](#453-combine)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
 * [7. 数据分析项目实战](#7-数据分析项目实战)
@@ -381,7 +391,8 @@ c['b'] # 读 b
 
 ## 3. pandas 入门
 
-pandas 中两种重要的数据结构：Series 和 DataFrame  
+[pandas API](https://pandas.pydata.org/pandas-docs/stable/api.html#)  
+pandas 中两种重要的数据结构：[Series](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.html#pandas.Series) 和 [DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame)  
 此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
 
 ### 3.1 pandas 中的 Series
@@ -761,19 +772,22 @@ df_new
 ### 3.4 DataFrame IO
 
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/io.html)  
-[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py) | [22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
-
+[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中  
+[2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py)  
+[22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
 
 
 ### 3.5 DataFrame(Selecting 和 Indexing)
 
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/indexing.html)  
-[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中 [3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py) | [4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py) | 
-[27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py) | [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)
+[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中  
+[3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py)  
+[4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py)  
+[27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py)  [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)  
 
 ### 3.6 Reindexing Series 和 DataFrame
 
-[Reindexing Series&DataFrame](Code/2-pandas/ReindexingSeries&DataFrame.ipynb)  
+[Reindexing Series&DataFrame](Code/2-pandas/ReindexingSeriesDataFrame.ipynb)  
 
 ```python
 import numpy as np
@@ -892,7 +906,7 @@ F	0.599175	0.543432	0.443125	0.471929	0.436654
 
 ### 3.7 Mapping 和 Replace
 
-[Mapping&Replace](Code/2-pandas/Mapping&Replace.ipynb)  
+[Mapping&Replace](Code/2-pandas/MappingReplace.ipynb)  
 
 ```python
 import numpy as np
@@ -1195,6 +1209,192 @@ df['bj'][8]
 ## 4. pandas 玩转数据
 
 pandas 进阶，学习数据清洗、排序、采样技术、封箱技术、Group By、聚合技术、透视表等
+
+### 4.1 Series 和 DataFrame 的简单数学运算
+
+[Series 和 DataFrame 的简单数学运算](Code/3-pandas玩转数据/1-Series和DataFrame的简单数学运算.ipynb) 
+
+#### 4.1.1 Series 的[数学运算](http://pandas.pydata.org/pandas-docs/stable/api.html#computations-descriptive-stats)
+
+Series 的运算为对应 index 的值的运算的集合
+
+```python
+import numpy as np
+import pandas as pd
+
+s1 = pd.Series([1, 2, 3], index=['A', 'B', 'C'])
+s2 = pd.Series([4, 5, 6, 7], index=['B','C', 'D', 'E'])
+
+# Series 的运算为对应 index 的值的运算的集合
+s1 + s2
+# A    NaN
+# B    6.0
+# C    8.0
+# D    NaN
+# E    NaN
+# dtype: float64
+```
+
+#### 4.1.2 DataFrame 的[数学运算](https://pandas.pydata.org/pandas-docs/stable/api.html#computations-descriptive-stats)
+
+* DataFrame 的运算为对应 元素 的值的运算的集合
+* [**sum()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sum.html) 计算每一列的和（NaN 会被忽略）放回一个 Series。axis=1 参数可以求每一行的值
+* [**min()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.min.html) 计算每一列的最小值（NaN 会被忽略）放回一个 Series，axis=1 参数可以求每一行的值
+* [**max()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.max.html) 计算每一列的最大值（NaN 会被忽略）放回一个 Series，axis=1 参数可以求每一行的值
+* [**describe()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html) 统计 
+
+```python
+df1 = pd.DataFrame(np.arange(4).reshape(2, 2), index=['A', 'B'], columns=['BJ', 'SH'])
+df2 = pd.DataFrame(np.arange(9).reshape(3, 3), index=['A', 'B', 'C'], columns=['BJ', 'SH', 'GZ'])
+
+# DataFrame 的运算为对应 元素 的值的运算的集合
+df1 + df2
+'''
+        BJ	GZ	SH
+A	0.0	NaN	2.0
+B	5.0	NaN	7.0
+C	NaN	NaN	NaN
+'''
+```
+
+### 4.2 Series 和 DataFrame 的排序
+
+[Series 和 DataFrame 的排序](Code/3-pandas玩转数据/2-Series和DataFrame的排序.ipynb) 
+
+[Series Reshaping, sorting(重塑和排序)](https://pandas.pydata.org/pandas-docs/stable/api.html#reshaping-sorting) |  
+[DataFrame Reshaping, sorting, transposing((重塑\排序\变换))](https://pandas.pydata.org/pandas-docs/stable/api.html#reshaping-sorting-transposing)
+* [**s.sort_values()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.sort_values.html) Series 按 value 升序排序（默认 ascending=True，ascending=False 表示降序排序）
+* [**s.sort_index()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.sort_index.html#pandas.Series.sort_index) Series 按 index 升序排序（默认 ascending=True，ascending=False 表示降序排序）
+* [**df.sort_values('A')**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_values.html) DataFrame 以列 'A' 按 value 升序排序（默认 ascending=True，ascending=False 表示降序排序）
+* [**df.sort_index()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.sort_index.html) DataFrame 按 index 升序排序（默认 ascending=True，ascending=False 表示降序排序）
+
+### 4.3 重命名 DataFrame 的 index
+
+[重命名 DataFrame 的 index](Code/3-pandas玩转数据/3-重命名DataFrame的index.ipynb) 
+
+```python
+# 修改 DataFrame 的 index 和 columns
+df.rename(index=str.lower, columns=str.lower)
+df.rename(index={'BJ': 'beijing'})
+df.index.map(str.upper)
+```
+
+[**map()**](http://book.pythontips.com/en/latest/map_filter.html#map) 方法
+```python
+# 将 list1 = [1, 2, 3, 4] 转换成 list2 = ['1', '2', '3', '4']
+list1 = [1, 2, 3, 4]
+# 方法一
+[str(x) for x in list1] # ['1', '2', '3', '4']
+
+# 方法二
+list(map(str, list1)) # ['1', '2', '3', '4']
+```
+
+### 4.4 DataFrame 的 [merge](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.merge.html) 操作
+
+[DataFrame 的 merge 操作](Code/3-pandas玩转数据/4-DataFrame的merge操作.ipynb) 
+
+```python
+df1 = pd.DataFrame({'Key': ['X', 'Y', 'Z'], 'data_set_1': [1, 2, 3]})
+df2 = pd.DataFrame({'Key': ['X', 'B', 'C'], 'data_set_2': [4, 5, 6]})
+
+# 合并（类似于 SQL中的 join 操作）
+pd.merge(df1, df2)
+'''
+Key	data_set_1	data_set_2
+0	X	1	4
+1	X	2	4
+'''
+```
+
+### 4.5 Concatenate 和 Combine
+
+[Concatenate 和 Combine](Code/3-pandas玩转数据/5-Concatenate和Combine.ipynb)   
+
+NumPy [concatenate](https://docs.scipy.org/doc/numpy/reference/generated/numpy.concatenate.html)  
+pandas [Merge, join, and concatenate](https://pandas.pydata.org/pandas-docs/stable/merging.html)  
+pandas [concat](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html#pandas.concat)  
+pandas [Series.str.cat](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.str.cat.html#pandas.Series.str.cat)  
+pandas [Series.combine_first](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.combine_first.html)  
+pandas [DataFrame.combine_first](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.combine_first.html#pandas-dataframe-combine-first)
+
+#### 4.5.1 Concatenate
+
+```python
+arr1 = np.arange(9).reshape(3, 3)
+arr2 = np.arange(9).reshape(3, 3)
+
+np.concatenate([arr1, arr2])
+# array([[0, 1, 2],
+#        [3, 4, 5],
+#        [6, 7, 8],
+#        [0, 1, 2],
+#        [3, 4, 5],
+#        [6, 7, 8]])
+```
+
+#### 4.5.2 Concat
+
+```python
+s1 = pd.Series([1, 2, 3], index=['X', 'Y', 'Z'])
+s2 = pd.Series([1, 2], index=['A', 'B'])
+
+pd.concat([s1, s2], axis=1, sort=True)
+'''
+        0	1
+A	NaN	1.0
+B	NaN	2.0
+X	1.0	NaN
+Y	2.0	NaN
+Z	3.0	NaN
+'''
+
+df1 = pd.DataFrame(np.random.randn(4, 3), columns=['X', 'Y', 'Z'])
+df2 =  pd.DataFrame(np.random.randn(3, 3), columns=['X', 'Y', 'A'])
+
+pd.concat([df1, df2],sort=True)
+'''
+        X	        Y	        Z	        X	        Y	        A
+0	-0.150725	-2.251965	-0.916322	1.721364	0.310061	-0.165037
+1	-1.841673	3.361009	0.132322	-1.621575	0.284105	-0.488211
+2	-0.705189	-0.884906	-0.456689	1.356419	0.776563	0.920558
+3	0.862066	-0.575394	0.915041	NaN	NaN	NaN
+'''
+```
+
+#### 4.5.3 Combine
+
+```python
+s1 = pd.Series([2, np.nan, 4, np.nan], index=['A', 'B', 'C', 'D'])
+s2 = pd.Series([1, 2, 3, 4], index=['A', 'B', 'C',  'D'])
+
+# 使用 s2 填充 S1
+s1.combine_first(s2)
+# A    2.0
+# B    2.0
+# C    4.0
+# D    4.0
+# dtype: float64
+
+df1 = pd.DataFrame({
+    'x': [1, np.nan, 3, np.nan], 
+    'y': [5, np.nan, 7, np.nan], 
+    'z': [9, np.nan, 11, np.nan], 
+})
+df2 = pd.DataFrame({
+    'z': [np.nan, 10, np.nan, 12], 
+    'a': [1, 2, 3, 4], 
+})
+df1.combine_first(df2)
+'''
+        a	x	y	z
+0	1.0	1.0	5.0	9.0
+1	2.0	NaN	NaN	10.0
+2	3.0	3.0	7.0	11.0
+3	4.0	NaN	NaN	12.0
+'''
+
+```
 
 ## 5. 绘图与可视化-MatPlotLib
 
