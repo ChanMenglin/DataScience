@@ -49,6 +49,10 @@
         * [4.5.1 Concatenate](#451-concatenate)
         * [4.5.2 Concat](#452-concat)
         * [4.5.3 Combine](#453-combine)
+    * [4.6 时间序列的操作基础](#46-时间序列的操作基础)
+    * [4.7 其他方法](#47-其他方法)
+        * [4.7.1 数据处理](#471-数据处理)
+        * [4.7.2 数据清洗](#472-数据清洗)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
 * [7. 数据分析项目实战](#7-数据分析项目实战)
@@ -1393,8 +1397,94 @@ df1.combine_first(df2)
 2	3.0	3.0	7.0	11.0
 3	4.0	NaN	NaN	12.0
 '''
-
 ```
+
+### 4.6 时间序列的操作基础
+
+[时间序列的操作基础](Code/3-pandas玩转数据/6-时间序列的操作基础.ipynb)  
+
+[Python datetime](https://docs.python.org/2/library/datetime.html)  
+[pandas datetime](https://pandas.pydata.org/pandas-docs/stable/api.html#datetimeindex)  
+[pandas.to_datetime](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.to_datetime.html)  
+[Series datetime](https://pandas.pydata.org/pandas-docs/stable/api.html#datetimelike-properties)
+
+```python
+# 创建一个 DateTime 的对象
+t1 = dt.datetime(2018, 10, 20)
+t1 # datetime.datetime(2018, 10, 20, 0, 0)
+
+date_list = [
+    dt.datetime(2017, 10, 20), 
+    dt.datetime(2018, 10, 21), 
+    dt.datetime(2018, 11, 22), 
+    dt.datetime(2018, 12, 23), 
+    dt.datetime(2019, 1, 24), 
+]
+s1 = pd.Series(np.random.rand(5), index=date_list)
+# s1
+# 2017-10-20    0.467958
+# 2018-10-21    0.170206
+# 2018-11-22    0.349676
+# 2018-12-23    0.609425
+# 2019-01-24    0.543507
+# dtype: float64
+
+s1['2018-10'] 
+# 2018-10-21    0.170206
+# dtype: float64
+
+d2 = pd.date_range('2018-1-1', '2018-12-30')
+# d2
+# DatetimeIndex(['2018-01-01', '2018-01-02', '2018-01-03', '2018-01-04',
+#                '2018-01-05', '2018-01-06', '2018-01-07', '2018-01-08',
+#                '2018-01-09', '2018-01-10',
+#                ...
+#                '2018-12-21', '2018-12-22', '2018-12-23', '2018-12-24',
+#                '2018-12-25', '2018-12-26', '2018-12-27', '2018-12-28',
+#                '2018-12-29', '2018-12-30'],
+#               dtype='datetime64[ns]', length=364, freq='D')
+
+s2 = pd.Series(np.random.rand(len(d2)), index=d2)
+s2
+
+s2.resample('M').mean() 
+# 参考 ：https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.resample.html
+```
+
+### 4.7 其他方法
+
+#### 4.7.1 数据处理
+
+[Series.apply](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.apply.html)  
+[DataFrame.apply](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.apply.html) 
+
+#### 4.7.2 数据清洗
+
+[Data manipulations](https://pandas.pydata.org/pandas-docs/stable/api.html#data-manipulations)  
+
+* 去重  
+[Series.duplicated](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.duplicated.html)  
+[Series.drop_duplicated](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.duplicated.html#)  
+[DataFrame.duplicates](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.duplicated.html)  
+[DataFrame.drop_duplicates](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html)  
+
+* 数据分箱技术  
+[cut](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html)  
+
+* 数据分组技术  
+[GroupBy](https://pandas.pydata.org/pandas-docs/stable/api.html#groupby)  
+[Series.groupby](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.groupby.html)  
+[DataFrame.group](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html)  
+
+* 数据聚合技术  
+[Series.agg](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.agg.html)  
+[Series.aggregate](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html)  
+[DataFrame.agg](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.agg.html)  
+[DataFrame.aggregate](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html)  
+
+* 透视表  
+[pivot_table](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html)  
+[DataFrame.pivot_table](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot_table.html)  
 
 ## 5. 绘图与可视化-MatPlotLib
 
