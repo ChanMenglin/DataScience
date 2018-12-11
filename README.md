@@ -1685,7 +1685,7 @@ plt.show()
 ```
 ![图 4-4](Code/4-MatPlotLib/img/4-4.png)  
 
-### 5.5 对 pandas 的 DataFrame 绘图
+### 5.5 pandas 的 DataFrame 绘图
 
 [pandas 的 DataFrame 绘图](Code/4-MatPlotLib/3-pandas之DataFrame绘图.ipynb)  
 
