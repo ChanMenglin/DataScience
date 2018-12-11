@@ -1,6 +1,6 @@
 # 数据科学(Data Science)
 
-> 本仓库的代码全部在 Anaconda 的 jupyter NoteBook 中编写
+> 本仓库的代码全部在 Anaconda 的 [jupyter NoteBook](http://nbviewer.jupyter.org) 中编写
 
 > 数据科学工作流
 > 1. Inquire：通过数据获取什么信息，解决什么问题
@@ -54,6 +54,11 @@
         * [4.7.1 数据处理](#471-数据处理)
         * [4.7.2 数据清洗](#472-数据清洗)
 * [5. 绘图与可视化-MatPlotLib](#5-绘图与可视化-matplotlib)
+    * [5.1 MatPlotLib-线性图](#51-matplotlib-线性图)
+    * [5.2 MatPlotLib-直方图](#52-matplotlib-直方图)
+    * [5.3 MatPlotLib-密度图](#53-matplotlib-密度图)
+    * [5.4 pandas 的 Series 绘图](#54-pandas-的-series-绘图)
+    * [5.5 pandas 的 DataFrame 绘图](#55-pandas-的-dataframe-绘图)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
 * [7. 数据分析项目实战](#7-数据分析项目实战)
 
@@ -62,6 +67,7 @@
 * [附录](#附录)
     * [1. 数据可续领域5个组建 Python 库](#1-数据科学领域5个组建-python-库)
     * [2. 数学基础-矩阵运算](#2-数学基础-矩阵运算)
+    * [3. 工具使用 Jupyter Notebook](#3-工具使用-jupyter-notebook)
 
 ---
 
@@ -777,17 +783,20 @@ df_new
 
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/io.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中  
-[2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py)  
-[22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
+
+* [2 - 读取文件](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/2-ReadExcel/ReadExcel.py)  
+* [22 - 读取CSV、TSV、TXT文件中的数据](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/22-ReadData/ReadData.py)
 
 
 ### 3.5 DataFrame(Selecting 和 Indexing)
 
 [官方文档](http://pandas.pydata.org/pandas-docs/stable/indexing.html)  
 [PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) 中  
-[3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py)  
-[4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py)  
-[27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py)  [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)  
+
+* [3 - 行、列、单元格](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/3-Rows&Clumns&Cell/Rows&Clumns&Cell.py)
+* [4&5 - 数据区域的读取，填充整数、文字,填充日期序列](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/4%265-ReadData&BaseInput/ReadData&BaseInput.py)
+* [27 - 行操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/27-RowOperation/RowOperation.py)
+* [28 - 列操作集锦](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/28-ColOperation/ColOperation.py)
 
 ### 3.6 Reindexing Series 和 DataFrame
 
@@ -1263,9 +1272,9 @@ C	NaN	NaN	NaN
 
 ### 4.2 Series 和 DataFrame 的排序
 
-[Series 和 DataFrame 的排序](Code/3-pandas玩转数据/2-Series和DataFrame的排序.ipynb) 
+[Series 和 DataFrame 的排序](Code/3-pandas玩转数据/2-Series和DataFrame的排序.ipynb)  
 
-[Series Reshaping, sorting(重塑和排序)](https://pandas.pydata.org/pandas-docs/stable/api.html#reshaping-sorting) |  
+[Series Reshaping, sorting(重塑和排序)](https://pandas.pydata.org/pandas-docs/stable/api.html#reshaping-sorting)  
 [DataFrame Reshaping, sorting, transposing((重塑\排序\变换))](https://pandas.pydata.org/pandas-docs/stable/api.html#reshaping-sorting-transposing)
 * [**s.sort_values()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.sort_values.html) Series 按 value 升序排序（默认 ascending=True，ascending=False 表示降序排序）
 * [**s.sort_index()**](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.sort_index.html#pandas.Series.sort_index) Series 按 index 升序排序（默认 ascending=True，ascending=False 表示降序排序）
@@ -1462,33 +1471,269 @@ s2.resample('M').mean()
 
 [Data manipulations](https://pandas.pydata.org/pandas-docs/stable/api.html#data-manipulations)  
 
-* 去重  
+* 去重
+
 [Series.duplicated](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.duplicated.html)  
 [Series.drop_duplicated](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.duplicated.html#)  
 [DataFrame.duplicates](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.duplicated.html)  
 [DataFrame.drop_duplicates](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html)  
 
-* 数据分箱技术  
+* 数据分箱技术
+
 [cut](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html)  
 
-* 数据分组技术  
+* 数据分组技术
+
 [GroupBy](https://pandas.pydata.org/pandas-docs/stable/api.html#groupby)  
 [Series.groupby](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.groupby.html)  
 [DataFrame.group](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html)  
 
-* 数据聚合技术  
+* 数据聚合技术
+
 [Series.agg](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.agg.html)  
 [Series.aggregate](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html)  
 [DataFrame.agg](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.agg.html)  
 [DataFrame.aggregate](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html)  
 
-* 透视表  
+* 透视表
+
 [pivot_table](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html)  
 [DataFrame.pivot_table](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot_table.html)  
 
 ## 5. 绘图与可视化-MatPlotLib
 
-数据展示
+数据展示 这里只会以几种最常用的图例作为示例进行讲解，更多的图例的使用请参考[官方文档](https://matplotlib.org/gallery/index.html#)
+
+[官网](https://matplotlib.org/index.html)  
+[example](https://matplotlib.org/gallery/index.html#)  
+[Matplotlib PDF](https://matplotlib.org/Matplotlib.pdf)  
+[Matlotlib Tutorials](https://pythonspot.com/matplotlib/)  
+
+此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
+* [9 - 柱状图](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/9-Histogram/Histogram.py)
+* [10 - 绘制分组柱图，深度优化图表](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/10-GroupedHistogran&DepthOptimizationChart/GroupedHistogran&DepthOptimizationChart.py)
+* [11 - 绘制分组柱图，深度优化图表](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/11-SuperimposedHistogram&HorizontalHistogram/SuperimposedHistogram&HorizontalHistogram.py)
+* [12 - 绘制饼图](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/12-PieChart/PieChart.py)
+* [13 - 绘制折线趋势图、叠加区域图](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/13-PolylineTrendChart&OverlayAreaMap/PolylineTrendChart&OverlayAreaMap.py)
+* [14%15 - 散点图，直方图，密度图,密度图，数据相关性](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/14%2615-ScatterPlot&Histogram&DensityMap/ScatterPlot&Histogram&DensityMap.py)
+
+### 5.1 MatPlotLib-线性图
+
+[MatPlotLib-线性图](Code/4-MatPlotLib/1-MatPlotLib-线性图.ipynb)  
+
+[plot](https://matplotlib.org/api/pyplot_api.html)  
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 线性图
+a = [1, 2, 3]
+b = [4, 5, 6]
+plt.plot(a, b)
+plt.show()
+```
+![图 1-1](Code/4-MatPlotLib/img/1-1.png)  
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 线性图
+x = np.linspace(0.0, 5.0)
+y1 = np.sin(np.pi*x)
+y2 = np.sin(np.pi*2*x)
+plt.plot(x, y1,'b--', label='sin(pi*x)')
+plt.ylabel('y1 value')
+plt.plot(x, y2,'r--', label='sin(pi*2x)')
+plt.ylabel('y2 value')
+plt.xlabel('x value')
+plt.title('this is a x-y value')
+plt.legend()
+plt.show()
+```
+![图 1-2](Code/4-MatPlotLib/img/1-2.png)  
+
+[subplot - 子图](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html)  
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# subplot 子图
+x = np.linspace(0.0, 5.0)
+y1 = np.sin(np.pi*x)
+y2 = np.sin(np.pi*2*x)
+
+# 子图一（‘2, 1, 1’ 等同于‘211’ 表示 两行一列第一个图）
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, 'b--')
+plt.ylabel('y1')
+plt.xlabel('x')
+#（‘2, 1, 2’ 等同于‘212’表示 两行一列第二个图）
+plt.subplot(212)
+plt.plot(x, y2, 'r--')
+plt.ylabel('y2')
+plt.xlabel('x')
+plt.show()
+```
+![图 1-3](Code/4-MatPlotLib/img/1-3.png)  
+
+[subplots - 子图](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html)  
+
+```python
+# 子图二（‘2, 2’ 表示两行两列）
+figure, ax = plt.subplots(2, 2)
+ax[0][0].plot(x, y1)
+ax[0][1].plot(x, y2)
+# 此处只填充了 ax[0][0]、ax[0][1]，ax[1][0]、ax[1][1] 未填充
+plt.show()
+```
+![图 1-4](Code/4-MatPlotLib/img/1-4.png)  
+
+### 5.2 MatPlotLib-直方图
+
+[MatPlotLib-直方图](Code/4-MatPlotLib/4-MatPlotLib-直方图.ipynb)  
+
+[hist](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.hist.html)  
+[Matplotlib Histogram](https://pythonspot.com/matplotlib-histogram/)  
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# MatPlotLib-直方图
+s = pd.Series(np.random.randn(1000))
+# 直方图（rwidth 为宽度，bins 为分割区间，默认10） 
+plt.hist(s, rwidth=0.9, bins=30)
+plt.show()
+```
+![图 2-1](Code/4-MatPlotLib/img/2-1.png)  
+
+### 5.3 MatPlotLib-密度图
+
+[MatPlotLib-密度图](Code/4-MatPlotLib/5-MatPlotLib-密度图.ipynb)  
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# MatPlotLib-密度图
+s = pd.Series(np.random.randn(1000))
+# 密度图
+s.plot(kind='kde')
+plt.show()
+```
+![图 3-1](Code/4-MatPlotLib/img/3-1.png)  
+
+### 5.4 pandas 的 Series 绘图
+
+[pandas 的 Series 绘图](Code/4-MatPlotLib/2-pandas之Series绘图.ipynb)  
+
+[Series plotting](https://pandas.pydata.org/pandas-docs/stable/api.html#plotting)  
+[Series.plot](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.plot.html)  
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# pandas 的 Series 绘图
+s1 = pd.Series(np.random.randn(1000)).cumsum()
+s1.plot(kind='line', grid=True, label='s1', title='this is Series line')
+plt.legend()
+plt.show
+```
+![图 4-1](Code/4-MatPlotLib/img/4-1.png)  
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# pandas 的 Series 绘图
+s1 = pd.Series(np.random.randn(1000)).cumsum()
+s2 = pd.Series(np.random.randn(1000)).cumsum()
+s1.plot(kind='line', label='s1')
+s2.plot(label='s2')
+plt.legend()
+plt.show()
+```
+![图 4-2](Code/4-MatPlotLib/img/4-2.png)  
+
+```python
+# pandas 的 Series 绘图 - 子图
+s1 = pd.Series(np.random.randn(1000)).cumsum()
+s2 = pd.Series(np.random.randn(1000)).cumsum()
+fig, ax = plt.subplots(2, 1)
+ax[0].plot(s1)
+ax[1].plot(s2)
+plt.show()
+```
+![图 4-3](Code/4-MatPlotLib/img/4-3.png)  
+
+```python
+# pandas 的 Series 绘图 - 子图
+s1 = pd.Series(np.random.randn(1000)).cumsum()
+s2 = pd.Series(np.random.randn(1000)).cumsum()
+fig, ax =plt.subplots(2, 1)
+s1[0: 10].plot(ax=ax[0], kind='bar')
+s2.plot(ax=ax[1])
+plt.show()
+```
+![图 4-4](Code/4-MatPlotLib/img/4-4.png)  
+
+### 5.5 对 pandas 的 DataFrame 绘图
+
+[pandas 的 DataFrame 绘图](Code/4-MatPlotLib/3-pandas之DataFrame绘图.ipynb)  
+
+[DataFrame plotting](https://pandas.pydata.org/pandas-docs/stable/api.html#api-dataframe-plotting)  
+[DataFrame.plot](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.plot.html)  
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# pandas 的 DataFrame 绘图
+df = pd.DataFrame(
+    np.random.randint(1, 10, 40).reshape(10, 4),
+    columns=['A', 'B', 'C', 'D']
+)
+df.plot()
+plt.show()
+```
+![图 5-1](Code/4-MatPlotLib/img/5-1.png)  
+
+```python
+# 按行（index）画图
+df.iloc[5].plot()
+plt.show()
+```
+![图 5-2](Code/4-MatPlotLib/img/5-2.png)  
+
+```python
+# 按行（index）画图
+for i in df.index:
+    df.iloc[i].plot(label=str(i))
+plt.legend()
+plt.show()
+# 同上
+df.T.plot()
+plt.show()
+```
+![图 5-3](Code/4-MatPlotLib/img/5-3.png)  
+
+```python
+# 按列（columns）画图
+for i in df.columns:
+    df[i].plot(label=str(i))
+plt.legend()
+plt.show()
+```
+![图 5-4](Code/4-MatPlotLib/img/5-4.png)  
 
 ## 6. 绘图与可视化-SeaBorn
 
@@ -1573,3 +1818,14 @@ s2.resample('M').mean()
 ![矩阵的乘法](./img/JZ04.png)
 
 参考：清华大学出版社的线性代数 http://bs.szu.edu.cn/sljr/Up/day_110824/201108240409437707.pdf
+
+## 3. 工具使用 Jupyter Notebook
+
+[Jupyter 官网](https://jupyter.org)  
+[Docs](https://jupyter-notebook.readthedocs.io/en/stable/)  
+[nbviewer](https://nbviewer.jupyter.org)  
+[Jupyter Magic functions](https://www.dummies.com/programming/python/common-jupyter-notebook-magic-functions/)  
+
+* %matplotlib inline：matplotlib 中不用显式调用 show() 方法即可显示图形
+* %timeit + 语句：可查看语句的执行时间及运行次数
+
