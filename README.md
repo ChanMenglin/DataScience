@@ -1471,32 +1471,27 @@ s2.resample('M').mean()
 
 [Data manipulations](https://pandas.pydata.org/pandas-docs/stable/api.html#data-manipulations)  
 
-* 去重
-
+* 去重  
 [Series.duplicated](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.duplicated.html)  
 [Series.drop_duplicated](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.duplicated.html#)  
 [DataFrame.duplicates](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.duplicated.html)  
 [DataFrame.drop_duplicates](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.drop_duplicates.html)  
 
-* 数据分箱技术
-
+* 数据分箱技术  
 [cut](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.cut.html)  
 
-* 数据分组技术
-
+* 数据分组技术  
 [GroupBy](https://pandas.pydata.org/pandas-docs/stable/api.html#groupby)  
 [Series.groupby](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.groupby.html)  
 [DataFrame.group](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.groupby.html)  
 
-* 数据聚合技术
-
+* 数据聚合技术  
 [Series.agg](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.agg.html)  
 [Series.aggregate](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html)  
 [DataFrame.agg](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.agg.html)  
 [DataFrame.aggregate](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.aggregate.html)  
 
-* 透视表
-
+* 透视表  
 [pivot_table](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.pivot_table.html)  
 [DataFrame.pivot_table](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.pivot_table.html)  
 
@@ -1510,6 +1505,7 @@ s2.resample('M').mean()
 [Matlotlib Tutorials](https://pythonspot.com/matplotlib/)  
 
 此处可参考我的另一个库：[PandasVersusExcel(Python)](https://chanmenglin.github.io/PandasVersusExcel/) | [Github](https://github.com/ChanMenglin/PandasVersusExcel)
+
 * [9 - 柱状图](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/9-Histogram/Histogram.py)
 * [10 - 绘制分组柱图，深度优化图表](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/10-GroupedHistogran&DepthOptimizationChart/GroupedHistogran&DepthOptimizationChart.py)
 * [11 - 绘制分组柱图，深度优化图表](https://github.com/ChanMenglin/PandasVersusExcel/blob/master/11-SuperimposedHistogram&HorizontalHistogram/SuperimposedHistogram&HorizontalHistogram.py)
