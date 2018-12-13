@@ -60,6 +60,10 @@
     * [5.4 pandas 的 Series 绘图](#54-pandas-的-series-绘图)
     * [5.5 pandas 的 DataFrame 绘图](#55-pandas-的-dataframe-绘图)
 * [6. 绘图与可视化-SeaBorn](#6-绘图与可视化-seaborn)
+    * [6.1 Seaborn-直方图和密度图](#61-seaborn-直方图和密度图)
+    * [6.2 Seaborn-柱状图和热力图](#62-seaborn-柱状图和热力图)
+    * [6.3 Seaborn-设置图形显示的效果](#63-Seaborn-设置图形显示的效果)
+    * [6.4 Seaborn-强大的调色功能](#64-seaborn-强大的调色功能)
 * [7. 数据分析项目实战](#7-数据分析项目实战)
 
 ---
