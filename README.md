@@ -1899,6 +1899,8 @@ sns.color_palette([(0.1, 0.2, 0.3), (...)])
 conda install -c anaconda pandas-datareader
 ```
 
+[实战](Code/6-实战)
+
 数据获取的方法：
 
 1. 爬虫
