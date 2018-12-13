@@ -1890,6 +1890,21 @@ sns.color_palette([(0.1, 0.2, 0.3), (...)])
 
 以股票市场为例从 数据获取-导入-分析-可视化 完整流程
 
+[数据分析和挖掘有哪些公开的数据来源？ - 知乎](https://www.zhihu.com/question/19969760)  
+
+获取yahoo 股票数据：[pandas-datareader](https://pandas-datareader.readthedocs.io/en/latest/)  
+
+```bash
+# anaconda 安装 pandas-datareader
+conda install -c anaconda pandas-datareader
+```
+
+数据获取的方法：
+
+1. 爬虫
+2. API
+
+
 ---
 
 # 附录
