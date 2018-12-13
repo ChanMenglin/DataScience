@@ -1733,7 +1733,154 @@ plt.show()
 
 ## 6. 绘图与可视化-SeaBorn
 
-数据展示
+[官网](http://seaborn.pydata.org)  
+[example](http://seaborn.pydata.org/examples/index.html)  
+[API](http://seaborn.pydata.org/api.html#)  
+[教程](http://seaborn.pydata.org/tutorial.html#)  
+
+### 6.1 Seaborn-直方图和密度图
+
+[Seaborn-直方图和密度图](Code/5-Seaborn/1-Seaborn-直方图和密度图.ipynb)  
+
+[seaborn.distplot](http://seaborn.pydata.org/generated/seaborn.distplot.html)
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+s1 = pd.Series(np.random.randn(1000))
+```
+
+```python
+# pandas 直方图
+plt.hist(s1)
+```
+![图 1-1](Code/5-Seaborn/img/1-1.png)  
+
+```python
+# pandas 密度图
+s1.plot(kind='kde')
+```
+![图 1-2](Code/5-Seaborn/img/1-2.png)  
+
+```python
+# Seaborn-直方图和密度图
+sns.distplot(s1, rug=True)
+```
+![图 1-3](Code/5-Seaborn/img/1-3.png)  
+
+```python
+# Seaborn-密度图
+sns.kdeplot(s1)
+```
+![图 1-4](Code/5-Seaborn/img/1-4.png)  
+
+### 6.2 Seaborn-柱状图和热力图
+
+[Seaborn-柱状图和热力图](Code/5-Seaborn/2-Seaborn-柱状图和热力图.ipynb)  
+
+[seaborn.heatmap](https://seaborn.pydata.org/generated/seaborn.heatmap.html)  
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plp
+import seaborn as sns
+
+# 使用 Seaborn 生成测试数据
+df1 = sns.load_dataset('flights')
+df = df1.pivot(index='month', columns='year', values='passengers')
+```
+
+> [load_dataset](https://seaborn.pydata.org/generated/seaborn.load_dataset.html) 为 Seaborn 提供的测试数据的获取方法（需要网络）。  
+> 数据地址：[seaborn-data](https://github.com/mwaskom/seaborn-data)
+
+```python
+# Seaborn-热力图
+sns.heatmap(df)
+```
+![图 2-1](Code/5-Seaborn/img/2-1.png)  
+
+```python
+# pandas-曲线图
+df.plot()
+```
+![图 2-2](Code/5-Seaborn/img/2-2.png)  
+
+```python
+# pandas-柱状图
+s.plot(kind='bar')
+```
+![图 2-3](Code/5-Seaborn/img/2-3.png)  
+
+```python
+# Seaborn-柱状图
+s = df.sum()
+sns.barplot(x=s.index, y=s.values)
+```
+![图 2-4](Code/5-Seaborn/img/2-4.png)  
+
+### 6.3 Seaborn-设置图形显示的效果
+
+[Seaborn-设置图形显示的效果](Code/5-Seaborn/3-Seaborn-设置图形显示的效果.ipynb)  
+
+[Style control](http://seaborn.pydata.org/api.html#style-control)  
+设置当前风格设置：[seaborn.set_style](http://seaborn.pydata.org/generated/seaborn.set_style.html)  
+查看当前风格设置：[seaborn.axes_style](http://seaborn.pydata.org/generated/seaborn.axes_style.html#seaborn.axes_style)  
+更改当前图利属性：[seaborn.set_context](http://seaborn.pydata.org/generated/seaborn.set_context.html)  
+查看当前图利属性：[seaborn.plotting_context](http://seaborn.pydata.org/generated/seaborn.plotting_context.html#seaborn.plotting_context)  
+取消个性化设置 [seaborn.set](http://seaborn.pydata.org/generated/seaborn.set.html)  
+
+```python
+# Seaborn 绘图风格
+style = ['darkgrid', 'dark', 'white', 'whitegrid', 'ticks']
+# set_style 设置当前风格设置 第二个参数可进行个性化设置
+sns.set_style(style[3])
+# 查看当前风格设置
+sns.axes_style()
+
+# 更改当前图利属性
+context = ['paper', 'notebook', 'talk', 'poster']
+sns.set_context('paper')
+# 查看当前图利属性
+sns.plotting_context()
+```
+
+### 6.4 Seaborn-强大的调色功能
+
+[Seaborn-强大的调色功能](Code/5-Seaborn/4-Seaborn-强大的调色功能.ipynb)  
+
+[Color palettes](http://seaborn.pydata.org/api.html#color-palettes)  
+[Choosing color palettes](https://seaborn.pydata.org/tutorial/color_palettes.html)  
+查看当前色板（RGB）：[seaborn.color_palette](https://seaborn.pydata.org/generated/seaborn.color_palette.html)  
+设置当前色板（RGB）：[seaborn.set_palette](http://seaborn.pydata.org/generated/seaborn.set_palette.html)  
+
+```python
+# 查看当前色板（RGB）
+sns.color_palette()
+
+# 默认色板
+pal_style = ['deep', 'muted', 'pastel', 'bright', 'dark', 'colorblind']
+
+# 显示当前色板（RGB）
+sns.palplot(sns.color_palette(pal_style[0]))
+```
+![图 4-1](Code/5-Seaborn/img/4-1.png)  
+
+```python
+# 设置色板
+sns.set_palette()
+
+# 设置临时风格(with 语句外会恢复默认色板)
+with sns.color_palette('dark'):
+    sinplot() # 绘图方法
+
+# 定义自定义色板('hls' 为固定值，8 表示生成8种颜色)
+sns.color_palette('hls', 8)
+sns.color_palette([(0.1, 0.2, 0.3), (...)])
+```
 
 ## 7. 数据分析项目实战
 
