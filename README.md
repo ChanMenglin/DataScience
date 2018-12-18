@@ -72,6 +72,7 @@
     * [1. 数据可续领域5个组建 Python 库](#1-数据科学领域5个组建-python-库)
     * [2. 数学基础-矩阵运算](#2-数学基础-矩阵运算)
     * [3. 工具使用 Jupyter Notebook](#3-工具使用-jupyter-notebook)
+    * [4. 数据可视化工具](#4-数据可视化工具)
 
 ---
 
@@ -1993,3 +1994,6 @@ conda install -c anaconda pandas-datareader
 * %matplotlib inline：matplotlib 中不用显式调用 show() 方法即可显示图形
 * %timeit + 语句：可查看语句的执行时间及运行次数
 
+## 4. 数据可视化工具
+
+![数据可视化工具](img/001.png)
