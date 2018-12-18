@@ -1996,5 +1996,6 @@ conda install -c anaconda pandas-datareader
 
 ## 4. 数据可视化工具
 
-[下载高清大图](img/数据可视化工具.png)
+[下载高清大图](img/数据可视化工具.png)(5.2M)
+
 ![数据可视化工具](img/数据可视化工具.jpg)
