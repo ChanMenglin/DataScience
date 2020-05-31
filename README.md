@@ -1900,7 +1900,7 @@ sns.color_palette([(0.1, 0.2, 0.3), (...)])
 conda install -c anaconda pandas-datareader
 ```
 
-[实战](Code/6-实战)
+[实战](Code/6-实战/)
 
 数据获取的方法：
 
@@ -1961,26 +1961,26 @@ conda install -c anaconda pandas-datareader
     * 对角线上的元素都是1
     * 任何矩阵乘以单位矩阵，结果为原先的矩阵（类似于任何数乘以1）
 
-![特殊的矩阵](./img/JZ01.png)
+![特殊的矩阵](img/JZ01.png)
 
 ### 2.3 矩阵的加减运算
 
 * 相加、相减的矩阵必须要有相同的列数和行数
 * 行和列对应元素相加减
 
-![矩阵的加减运算](./img/JZ02.png)
+![矩阵的加减运算](img/JZ02.png)
 
 ### 2.4 数组的乘法（点乘）
 
 * 数组乘法（点乘）是对应元素之间的乘法（类似矩阵的加减法）
 
-![数组的乘法（点乘）](./img/JZ03.png)
+![数组的乘法（点乘）](img/JZ03.png)
 
 ### 矩阵的乘法
 
 * 设 A 为 m×p 的矩阵，B 为 p×m 的矩阵，m×n 矩阵 C 为 A 与 B 的乘积，记为 C=AB，其中矩阵 C 的第 i 行第 j 列元素可标示为：
 
-![矩阵的乘法](./img/JZ04.png)
+![矩阵的乘法](img/JZ04.png)
 
 参考：清华大学出版社的线性代数 http://bs.szu.edu.cn/sljr/Up/day_110824/201108240409437707.pdf
 
@@ -1995,7 +1995,7 @@ conda install -c anaconda pandas-datareader
 * %timeit + 语句：可查看语句的执行时间及运行次数
 
 ## 4. 数据可视化工具
-
+~
 [下载高清大图](img/数据可视化工具.png)(5.2M)
 
 ![数据可视化工具](img/数据可视化工具.jpg)
